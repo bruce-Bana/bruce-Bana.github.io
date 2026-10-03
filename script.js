@@ -133,3 +133,13 @@
   card.addEventListener('mouseleave',()=>card.style.transform='');
  });
 })();
+
+// ---------- ambient particle network ----------
+(function(){
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(reduce)return;
+ const c=document.createElement('canvas');c.id='lifeCanvas';c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.42';document.querySelector('.bg-layer')?.appendChild(c);
+ const x=c.getContext('2d');let w,h,p=[];
+ function resize(){w=c.width=innerWidth;h=c.height=innerHeight;p=Array.from({length:Math.min(55,Math.floor(w/24))},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22}))}resize();addEventListener('resize',resize);
+ function draw(){x.clearRect(0,0,w,h);for(const a of p){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>w)a.vx*=-1;if(a.y<0||a.y>h)a.vy*=-1;x.fillStyle='rgba(97,216,255,.45)';x.fillRect(a.x,a.y,1.4,1.4)}for(let i=0;i<p.length;i++)for(let j=i+1;j<p.length;j++){const a=p[i],b=p[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);if(d<125){x.strokeStyle='rgba(97,216,255,'+(0.08*(1-d/125))+')';x.lineWidth=.7;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}requestAnimationFrame(draw)}draw();
+})();
