@@ -96,3 +96,16 @@
     typeLine();
   }
 })();
+
+
+// ---------- enhanced navigation + utilities ----------
+(function(){
+ const links=[['dashboard.html','dashboard'],['projects.html','projects'],['blog.html','blog'],['lab.html','lab'],['search.html','search'],['games.html','games'],['cv.html','cv']];
+ document.querySelectorAll('.navlinks').forEach(nav=>{links.forEach(([href,label])=>{if(!nav.querySelector('a[href="'+href+'"]')){const a=document.createElement('a');a.href=href;a.textContent=label;nav.appendChild(a);}});});
+ const body=document.body;
+ if('serviceWorker' in navigator && location.protocol==='https:') navigator.serviceWorker.register('sw.js').catch(()=>{});
+ const year=document.querySelector('footer .wrap'); if(year) year.innerHTML=year.innerHTML.replace(/©\\s*\\d{4}/,'© '+new Date().getFullYear());
+})();
+
+// ---------- keyboard shortcut: / opens site search ----------
+(function(){document.addEventListener('keydown',e=>{if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){const q=document.getElementById('siteSearch');if(q){e.preventDefault();q.focus();}}});})();
