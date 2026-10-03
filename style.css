@@ -260,3 +260,15 @@ footer{border-top:1px solid rgba(166,183,210,.1);background:rgba(7,10,18,.72)}
  .wrap{padding:0 20px}.navlinks{gap:12px;overflow-x:auto}.navlinks a{white-space:nowrap}
  .hero{padding:64px 0 50px}.hero-grid{gap:40px}.hero h1{font-size:46px}.role{font-size:15px}
 }
+
+/* ---------- LIVING INTERFACE ---------- */
+body:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,35%),rgba(97,216,255,.06),transparent 28%);transition:background .15s}
+.bg-layer:after{content:"";position:absolute;inset:-20%;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(97,216,255,.025) 70deg,transparent 140deg,rgba(143,157,255,.025) 220deg,transparent 300deg);animation:ambient-rotate 28s linear infinite}
+@keyframes ambient-rotate{to{transform:rotate(360deg)}}
+.float-orb{position:fixed;left:var(--orb-x,50%);top:var(--orb-y,50%);width:180px;height:180px;margin:-90px 0 0 -90px;border-radius:50%;pointer-events:none;z-index:0;opacity:.12;background:radial-gradient(circle,rgba(97,216,255,.35),rgba(143,157,255,.08) 42%,transparent 70%);filter:blur(10px);transition:left 1.2s ease,top 1.2s ease}
+.scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet));z-index:100;box-shadow:0 0 14px rgba(97,216,255,.6)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
+.counter{font:700 24px var(--mono);color:var(--cyan)}
+.status-live{display:inline-flex;align-items:center;gap:7px;font:10px var(--mono);color:#8fe8b4}.status-live:before{content:"";width:7px;height:7px;border-radius:50%;background:#70e1a5;box-shadow:0 0 12px #70e1a5;animation:live-pulse 1.7s infinite}@keyframes live-pulse{50%{opacity:.35;transform:scale(.7)}}
+.cursor-glow{position:fixed;width:16px;height:16px;border:1px solid rgba(97,216,255,.5);border-radius:50%;pointer-events:none;z-index:99;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s}
+@media(prefers-reduced-motion:reduce){.bg-layer:after{animation:none}.reveal{opacity:1;transform:none}.cursor-glow{display:none}}
