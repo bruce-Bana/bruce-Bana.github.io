@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bruce Bana | AI Lab & Experiments</title><meta name="description" content="Bruce Bana's AI lab: experiments in local AI, agents, voice interfaces, Rust, Python and developer tooling.">
+<link rel="canonical" href="https://bruce-bana.github.io/lab.html"><link rel="icon" href="profile.jpg"><link rel="stylesheet" href="style.css"></head>
+<body data-page="lab"><div class="bg-layer"><canvas id="stars"></canvas><div class="bg-grid"></div><div class="horizon-glow"></div><div class="scan-sweep"></div></div>
+<nav><div class="wrap"><a class="brand" href="index.html">bruce<span class="dot">.</span>bana</a><div class="navlinks"><a href="index.html">home</a><a href="dashboard.html">dashboard</a><a href="projects.html">projects</a><a href="blog.html">blog</a><a href="lab.html">lab</a><a href="contact.html">contact</a></div></div></nav>
+<main><header class="page-head"><div class="wrap"><p class="eyebrow">experimental systems</p><h1 class="page-title">THE LAB</h1><p class="page-sub">Ideas become prototypes here. These are lightweight interactive demonstrations that run directly in the browser.</p></div></header>
+<section><div class="wrap"><div class="lab-grid">
+<div class="glass lab-card"><span class="lab-num">01</span><h2>Prompt Router</h2><p>Classify a task into coding, research, writing or general assistance and see a simple routing decision.</p><textarea id="routeInput" placeholder="Try: build a Python API that searches GitHub"></textarea><button class="hud-btn" id="routeBtn">ANALYZE TASK</button><div id="routeOut" class="lab-output">Awaiting input…</div></div>
+<div class="glass lab-card"><span class="lab-num">02</span><h2>System Load Simulator</h2><p>Explore how workload intensity can be separated into lightweight local tasks and heavier cloud tasks.</p><input id="load" type="range" min="0" max="100" value="35"><div class="meter"><i id="meterFill"></i></div><div id="loadOut" class="lab-output">LOCAL-FIRST // 35%</div></div>
+<div class="glass lab-card"><span class="lab-num">03</span><h2>Voice UI Visualizer</h2><p>A browser-only visualization inspired by the voice-orb interfaces used in personal assistants.</p><div id="orb" class="voice-orb"><span></span></div><button class="hud-btn" id="orbBtn">ACTIVATE</button></div>
+<div class="glass lab-card"><span class="lab-num">04</span><h2>Architecture Map</h2><p class="mono">INPUT → ROUTER → MODEL → TOOLS → MEMORY → OUTPUT</p><div class="arch-flow"><span>VOICE / TEXT</span><b>→</b><span>ROUTER</span><b>→</b><span>MODEL</span><b>→</b><span>TOOLS</span></div></div>
+</div></div></section></main>
+<footer><div class="wrap">© 2026 Bruce Bana <span class="dot">·</span> AI lab</div></footer><script src="script.js"></script>
+<script>
+const ri=document.getElementById('routeInput'),ro=document.getElementById('routeOut');
+document.getElementById('routeBtn')?.addEventListener('click',()=>{const s=(ri.value||'').toLowerCase();let r=s.includes('code')||s.includes('python')||s.includes('rust')||s.includes('api')?'CODING / DEVELOPER TOOL':s.includes('search')||s.includes('research')||s.includes('latest')?'RESEARCH / WEB TOOL':s.includes('write')||s.includes('email')||s.includes('article')?'WRITING / TEXT TOOL':'GENERAL / CONVERSATIONAL';ro.textContent='ROUTE → '+r;});
+const load=document.getElementById('load'),fill=document.getElementById('meterFill'),lo=document.getElementById('loadOut');function syncLoad(){const n=+load.value;fill.style.width=n+'%';lo.textContent=(n<55?'LOCAL-FIRST':n<80?'HYBRID ROUTING':'HEAVY TASK / CLOUD-OPTION')+' // '+n+'%';}load?.addEventListener('input',syncLoad);syncLoad();
+const orb=document.getElementById('orb'),ob=document.getElementById('orbBtn');ob?.addEventListener('click',()=>{orb.classList.toggle('active');ob.textContent=orb.classList.contains('active')?'DEACTIVATE':'ACTIVATE';});
+</script></body></html>
