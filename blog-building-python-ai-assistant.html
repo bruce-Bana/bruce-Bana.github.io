@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Building a Python AI Assistant for Windows 10 | Bruce Bana</title>
+<meta name="description" content="How Bruce Bana approaches a Python AI assistant for Windows 10 with voice I/O, AI reasoning, shell tools, web access and lightweight interfaces.">
+<meta name="google-site-verification" content="zp4G4eOUT4LbUAAIY8emzoM2pT-TDkxfPat1dx1A7Hc">
+<meta property="og:type" content="article"><meta property="og:title" content="Building a Python AI Assistant for Windows 10"><meta property="og:description" content="A practical architecture for a Python AI assistant with voice, tools and a lightweight interface."><meta property="og:url" content="https://bruce-bana.github.io/blog-building-python-ai-assistant.html"><meta property="og:site_name" content="Bruce Bana">
+<link rel="canonical" href="https://bruce-bana.github.io/blog-building-python-ai-assistant.html"><link rel="stylesheet" href="style.css">
+</head><body data-page="blog"><div class="bg-layer"><canvas id="stars"></canvas><div class="bg-grid"></div><div class="horizon-glow"></div><div class="scan-sweep"></div></div>
+<nav><div class="wrap"><a class="brand" href="index.html">bruce<span class="dot">.</span>bana</a><div class="navlinks"><a href="index.html">home</a><a href="about.html">about</a><a href="projects.html">projects</a><a href="interests.html">interests</a><a href="contact.html">contact</a><a class="active" href="blog.html">blog</a></div></div></nav>
+<main><article class="wrap article"><div class="page-head"><p class="eyebrow">AI / PYTHON</p><h1 class="page-title">Building a Python AI Assistant for Windows 10</h1><p class="page-sub">A practical architecture for combining an AI brain with voice, system tools and a lightweight user interface.</p></div>
+<section style="padding-top:0;border-top:none;"><div class="article-body glass">
+<p>My goal with a personal AI assistant is not simply to make a chatbot. The useful part is the connection between conversation and actions: the assistant should be able to understand a request, decide whether a tool is needed, execute the tool safely, and explain the result.</p>
+<h2>Separate the assistant into layers</h2><p>A useful architecture is to keep the interface, AI provider, tools and device services separate. The UI handles input and output. The model handles reasoning. A tool layer exposes controlled capabilities such as shell commands, files or web requests. This separation makes it easier to replace one component without rewriting the entire application.</p>
+<h2>Voice is another interface, not the whole system</h2><p>Speech recognition and text-to-speech should sit around the same assistant core used by typed commands. That way the assistant can work in CLI mode when voice libraries are unavailable and still retain the same tool architecture.</p>
+<h2>Design for the machine you actually have</h2><p>On an older Windows computer, startup time and memory use matter. A lightweight GUI, lazy loading and optional local models can keep the basic assistant responsive while heavier AI tasks use an external provider when configured.</p>
+<h2>Make tools explicit</h2><p>Instead of giving the model unrestricted access to the operating system, expose specific functions with clear inputs and outputs. This makes errors easier to diagnose and creates a better boundary between reasoning and execution.</p>
+<h2>What I learned</h2><p>The hardest part is rarely the chat window. The engineering challenge is making many independent capabilities behave like one reliable system. Keeping the interfaces between components simple makes experimentation much faster.</p>
+</div></section></article></main>
+<footer><div class="wrap">© 2026 Bruce Bana</div></footer><script src="script.js"></script></body></html>
