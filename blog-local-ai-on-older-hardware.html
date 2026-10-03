@@ -2,16 +2,16 @@
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Running Local AI on Older Hardware | Bruce Bana</title>
-<meta name="description" content="Practical lessons from designing local AI software for older computers with limited CPU, RAM and storage.">
+<meta name="description" content="Practical engineering lessons for designing local AI software around limited CPU, RAM, storage and startup-time constraints.">
 <meta name="google-site-verification" content="zp4G4eOUT4LbUAAIY8emzoM2pT-TDkxfPat1dx1A7Hc">
-<meta property="og:type" content="article"><meta property="og:title" content="Running Local AI on Older Hardware"><meta property="og:description" content="Practical lessons for local AI software on constrained machines."><meta property="og:url" content="https://bruce-bana.github.io/blog-local-ai-on-older-hardware.html"><meta property="og:site_name" content="Bruce Bana"><meta property="og:image" content="https://bruce-bana.github.io/profile.jpg"><link rel="icon" href="profile.jpg">
-<link rel="canonical" href="https://bruce-bana.github.io/blog-local-ai-on-older-hardware.html"><link rel="stylesheet" href="style.css"><script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Running Local AI on Older Hardware | Bruce Bana","description":"Practical lessons from designing local AI software for older computers with limited CPU, RAM and storage.","author":{"@type":"Person","name":"Bruce Bana","url":"https://bruce-bana.github.io/"},"publisher":{"@type":"Person","name":"Bruce Bana"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://bruce-bana.github.io/blog-local-ai-on-older-hardware.html"},"image":"https://bruce-bana.github.io/profile.jpg"}
-</script>
-</head>
+<meta property="og:type" content="article"><meta property="og:title" content="Running Local AI on Older Hardware | Bruce Bana"><meta property="og:description" content="Practical engineering lessons for designing local AI software around limited CPU, RAM, storage and startup-time constraints."><meta property="og:url" content="https://bruce-bana.github.io/blog-local-ai-on-older-hardware.html"><meta property="og:site_name" content="Bruce Bana"><meta property="og:image" content="https://bruce-bana.github.io/profile.jpg"><link rel="icon" href="profile.jpg">
+<link rel="canonical" href="https://bruce-bana.github.io/blog-local-ai-on-older-hardware.html"><link rel="stylesheet" href="style.css">
+<meta property="og:image:alt" content="Portrait of Bruce Bana"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Running Local AI on Older Hardware | Bruce Bana"><meta name="twitter:description" content="Practical engineering lessons for designing local AI software around limited CPU, RAM, storage and startup-time constraints."><meta name="twitter:image" content="https://bruce-bana.github.io/profile.jpg"><meta name="twitter:image:alt" content="Portrait of Bruce Bana"><meta name="robots" content="index, follow">
 <body data-page="blog"><div class="bg-layer"><canvas id="stars"></canvas><div class="bg-grid"></div><div class="horizon-glow"></div><div class="scan-sweep"></div></div>
 <nav><div class="wrap"><a class="brand" href="index.html">bruce<span class="dot">.</span>bana</a><div class="navlinks"><a href="index.html">home</a><a href="about.html">about</a><a href="projects.html">projects</a><a href="interests.html">interests</a><a href="contact.html">contact</a><a class="active" href="blog.html">blog</a></div></div></nav>
-<main><article class="wrap article"><div class="page-head"><p class="eyebrow">LOCAL AI / PERFORMANCE</p><h1 class="page-title">Running Local AI on Older Hardware</h1><p class="page-sub">Why an AI application needs to be designed around the limits of the target machine.</p></div>
+<main>
+<nav class="breadcrumbs wrap" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="blog.html">Engineering Notes</a><span aria-hidden="true">/</span><span aria-current="page">Running Local AI on Older Hardware</span></nav>
+<article class="wrap article"><div class="page-head"><p class="eyebrow">LOCAL AI / PERFORMANCE</p><h1 class="page-title">Running Local AI on Older Hardware</h1><p class="page-sub">Why an AI application needs to be designed around the limits of the target machine.</p></div>
 <section style="padding-top:0;border-top:none;"><div class="article-body glass">
 <p>Local AI is attractive because it can reduce dependence on network access and keep some workloads on the user's machine. But a model that works comfortably on a modern workstation can feel unusable on an older computer.</p>
 <h2>Measure before optimizing</h2><p>Memory consumption, model load time, CPU utilization and disk access are useful starting measurements. Optimizing without measurements can move the bottleneck rather than remove it.</p>
@@ -19,4 +19,4 @@
 <h2>Choose the right workload</h2><p>Not every task needs a large local model. Routing can send simple commands to deterministic local functions while reserving heavier reasoning for a model that the hardware can actually handle.</p>
 <h2>Local does not have to mean everything is local</h2><p>A hybrid design can keep the interface and device tools local while allowing the user to configure a cloud provider for demanding reasoning. The important part is making the boundary explicit.</p>
 <h2>The practical lesson</h2><p>Performance is a product feature. On constrained hardware, a smaller system that starts quickly and responds predictably can be more useful than a much larger system that spends most of its time loading.</p>
-</div></section></article></main><footer><div class="wrap">© 2026 Bruce Bana</div></footer><script src="script.js"></script></body></html>
+</div></section></article></main><footer><div class="wrap">© 2026 Bruce Bana</div></footer><script src="script.js" defer></script></body></html>
