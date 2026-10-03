@@ -361,3 +361,8 @@ body:before{
 .connect-footer span{color:var(--muted);letter-spacing:.12em}.connect-footer a{color:var(--cyan);text-decoration:none}.connect-footer a:hover{text-decoration:underline}
 @media(max-width:680px){.connect-grid{grid-template-columns:1fr}.connect-panel{padding:20px}.connect-footer{align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.social-card,.social-card:before,.social-icon{transition:none}.connect-status span{animation:none}}
+
+/* ---------- METEOR SHOWER ---------- */
+#meteorCanvas{mix-blend-mode:screen;filter:drop-shadow(0 0 4px rgba(97,216,255,.28))}
+@media(max-width:680px){#meteorCanvas{opacity:.65}}
+@media(prefers-reduced-motion:reduce){#meteorCanvas{display:none}}
