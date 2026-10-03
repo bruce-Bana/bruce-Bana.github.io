@@ -20,4 +20,10 @@
 <div class="glass build-card"><span class="build-id">BEX CLI</span><h3>Command interface</h3><p>Agentic workflows, provider routing, tools and automation from the terminal.</p><span class="chip">CLI / AI</span></div>
 <div class="glass build-card"><span class="build-id">JARVIS</span><h3>Personal AI assistant</h3><p>Voice, reasoning, device interaction and a futuristic local-first interface.</p><span class="chip">ASSISTANT</span></div>
 </div></div></section>
-</main><footer><div class="wrap">© 2026 Bruce Bana <span class="dot">·</span> dashboard</div></footer><script src="script.js"></script></body></html>
+</main><footer><div class="wrap">© 2026 Bruce Bana <span class="dot">·</span> dashboard</div></footer><script src="script.js"></script><script>
+const rg=document.getElementById('githubRepos');
+fetch('https://api.github.com/users/bruce-Bana/repos?sort=updated&per_page=6')
+.then(r=>{if(!r.ok)throw new Error('GitHub API unavailable');return r.json()})
+.then(repos=>{rg.innerHTML=repos.map(x=>'<a class="glass repo-card" href="'+x.html_url+'" target="_blank" rel="noopener"><span class="repo-meta">'+(x.language||'CODE')+' · ★ '+x.stargazers_count+'</span><h3>'+x.name+'</h3><p>'+(x.description||'Public repository by Bruce Bana.')+'</p></a>').join('')||'<div class="glass dash-card">No public repositories returned.</div>';})
+.catch(()=>{rg.innerHTML='<div class="glass dash-card">GitHub activity is temporarily unavailable. <a class="blog-link" href="https://github.com/bruce-Bana">Open GitHub →</a></div>';});
+</script></body></html>
