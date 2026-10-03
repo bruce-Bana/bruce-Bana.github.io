@@ -109,3 +109,27 @@
 
 // ---------- keyboard shortcut: / opens site search ----------
 (function(){document.addEventListener('keydown',e=>{if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){const q=document.getElementById('siteSearch');if(q){e.preventDefault();q.focus();}}});})();
+
+// ---------- living interface ----------
+(function(){
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const progress=document.createElement('div');progress.className='scroll-progress';document.body.appendChild(progress);
+ const orb=document.createElement('div');orb.className='float-orb';document.body.appendChild(orb);
+ const cursor=document.createElement('div');cursor.className='cursor-glow';document.body.appendChild(cursor);
+ if(!reduce){
+  document.addEventListener('mousemove',e=>{document.documentElement.style.setProperty('--mx',e.clientX+'px');document.documentElement.style.setProperty('--my',e.clientY+'px');cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';cursor.style.opacity='1';});
+  document.addEventListener('mouseleave',()=>cursor.style.opacity='0');
+  let last=0;window.addEventListener('scroll',()=>{const now=performance.now();if(now-last<30)return;last=now;const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?(scrollY/max)*100:0)+'%';});
+  const els=document.querySelectorAll('section,.int-card,.glass');const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal','visible')}),{threshold:.08});els.forEach(e=>{if(!e.classList.contains('reveal'))e.classList.add('reveal');io.observe(e)});
+  let t=0;setInterval(()=>{t+=.7;const x=50+Math.sin(t/18)*32,y=42+Math.cos(t/23)*22;orb.style.setProperty('--orb-x',x+'%');orb.style.setProperty('--orb-y',y+'%')},50);
+ }else{progress.style.width='0';}
+})();
+
+// ---------- interactive card tilt ----------
+(function(){
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ document.querySelectorAll('.int-card,.blog-card,.repo-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform='perspective(700px) rotateX('+(-y*3)+'deg) rotateY('+(x*3)+'deg) translateY(-3px)';});
+  card.addEventListener('mouseleave',()=>card.style.transform='');
+ });
+})();
