@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Bruce Bana</title>
+<meta name="description" content="Projects by Bruce Bana: AIDE Ultra, BEX CLI, Auto-research, and the JARVIS AI assistant builds in Python and Rust.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="canonical" href="https://bruce-bana.github.io/projects.html">
+</head>
+<body data-page="projects">
+
+<div class="bg-layer">
+  <canvas id="stars"></canvas>
+  <div class="bg-grid"></div>
+  <div class="horizon-glow"></div>
+  <div class="scan-sweep"></div>
+</div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">bruce<span class="dot">.</span>bana</a>
+    <div class="navlinks">
+      <a href="index.html" data-page="home">home</a>
+      <a href="about.html" data-page="about">about</a>
+      <a href="projects.html" data-page="projects">projects</a>
+      <a href="interests.html" data-page="interests">interests</a>
+      <a href="contact.html" data-page="contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<div class="wrap page-head">
+  <p class="eyebrow">02 / projects</p>
+  <h2 class="page-title">What I've built</h2>
+  <p class="page-sub">Runtimes, CLIs, and assistants — mostly things I built because I wanted to use them myself.</p>
+</div>
+
+<section style="padding-top:0; border-top:none;">
+  <div class="wrap">
+    <div class="ptable glass">
+      <div class="prow head">
+        <div>name</div><div>type</div><div>status</div><div>description</div>
+      </div>
+
+      <div class="prow">
+        <div class="pname">AIDE Ultra</div>
+        <div class="ptype">Local AI runtime</div>
+        <div class="pstatus">● active</div>
+        <div class="pdesc">
+          A local AI runtime built in Python, in the vein of Ollama or LM Studio.
+          <ul>
+            <li>TurboQuant quantization and automatic tool calling</li>
+            <li>FastAPI server with an LM Studio-style web GUI</li>
+            <li>CLI and Windows installer tooling</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="prow">
+        <div class="pname">BEX CLI</div>
+        <div class="ptype">Node.js command-line tool</div>
+        <div class="pstatus">● v8 ultra</div>
+        <div class="pdesc">
+          A command-line tool taken through eight major iterations, from v6 to v8 Ultra.
+          <ul>
+            <li>Git integration and multi-provider AI support (Claude, OpenAI, Groq, Ollama)</li>
+            <li>Autonomous agent loop, file operations, task scheduling, process management</li>
+            <li>REST API server mode, scaffolding, plugin system, desktop notifications</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="prow">
+        <div class="pname">Auto-research</div>
+        <div class="ptype">Node.js research tool</div>
+        <div class="pstatus">● v2.0</div>
+        <div class="pdesc">
+          A tool for AI researchers, rebuilt from the ground up to v2.0.
+          <ul>
+            <li>Real API stubs for arXiv, Hugging Face, GitHub, and Papers with Code</li>
+            <li>Full-text indexing and multiple export formats</li>
+            <li>Automated research report generation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="prow">
+        <div class="pname">JARVIS (Python)</div>
+        <div class="ptype">Windows AI assistant</div>
+        <div class="pstatus">● shipped</div>
+        <div class="pdesc">
+          A Python-based AI assistant for Windows 10, powered by Claude.
+          <ul>
+            <li>Voice input/output, shell execution, web search, device control via function calling</li>
+            <li>Three interface modes: CLI, Tkinter GUI, Flask web</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="prow">
+        <div class="pname">JARVIS Phase 11</div>
+        <div class="ptype">Rust command interface</div>
+        <div class="pstatus">● in build</div>
+        <div class="pdesc">
+          An AI command interface system written in Rust, built from a full design document.
+          <ul>
+            <li>Axum web server with a registry of local and cloud Ollama models</li>
+            <li>NLP-based task classification and smart routing orchestration</li>
+            <li>Holographic Three.js interface</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Bruce Bana <span class="dot">·</span> built with intent, not a template</div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
