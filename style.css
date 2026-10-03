@@ -366,3 +366,11 @@ body:before{
 #meteorCanvas{mix-blend-mode:screen;filter:drop-shadow(0 0 4px rgba(97,216,255,.28))}
 @media(max-width:680px){#meteorCanvas{opacity:.65}}
 @media(prefers-reduced-motion:reduce){#meteorCanvas{display:none}}
+
+
+/* ---------- SEO / ACCESSIBLE BREADCRUMBS ---------- */
+.breadcrumbs{display:flex;align-items:center;gap:10px;padding-top:18px;padding-bottom:0;font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.breadcrumbs a{color:var(--cyan);text-decoration:none}
+.breadcrumbs a:hover{text-decoration:underline}
+.breadcrumbs span[aria-current="page"]{color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:680px){.breadcrumbs{padding-top:14px;font-size:10px;gap:7px}}
