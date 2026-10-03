@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found | Bruce Bana</title>
+  <meta name="description" content="The requested page could not be found on Bruce Bana's site.">
+  <meta http-equiv="refresh" content="3; url=./">
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    body {
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+    }
+    .not-found {
+      max-width: 520px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .not-found h1 {
+      margin-bottom: 0.75rem;
+    }
+    .not-found p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body data-page="home">
+  <main class="not-found glass">
+    <p class="eyebrow">404 / missing page</p>
+    <h1 class="page-title">This page moved or does not exist.</h1>
+    <p>Redirecting to the home page...</p>
+    <p><a href="./index.html">Click here if you are not redirected automatically.</a></p>
+  </main>
+</body>
+</html>
