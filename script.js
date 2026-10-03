@@ -109,3 +109,12 @@
 
 // ---------- keyboard shortcut: / opens site search ----------
 (function(){document.addEventListener('keydown',e=>{if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){const q=document.getElementById('siteSearch');if(q){e.preventDefault();q.focus();}}});})();
+
+// ---------- Gemini assistant launcher ----------
+(function(){
+  if(document.body.dataset.page==='gemini') return;
+  if(document.querySelector('.gemini-launcher')) return;
+  const a=document.createElement('a');
+  a.className='gemini-launcher'; a.href='gemini.html'; a.title='Open Gemini Assistant'; a.setAttribute('aria-label','Open Gemini Assistant'); a.textContent='AI';
+  document.body.appendChild(a);
+})();
