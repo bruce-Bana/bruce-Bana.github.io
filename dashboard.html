@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bruce Bana | Developer Dashboard</title>
-<meta name="description" content="Live developer dashboard for Bruce Bana: projects, GitHub activity, stack, experiments and current builds.">
+<title>Bruce Bana Developer Dashboard | Projects, AI &amp; GitHub</title>
+<meta name="description" content="A lightweight developer dashboard for Bruce Bana with public GitHub activity, current projects, technical stack and AI experiments.">
 <link rel="canonical" href="https://bruce-bana.github.io/dashboard.html"><link rel="icon" href="profile.jpg">
-<link rel="stylesheet" href="style.css"></head>
+<link rel="stylesheet" href="style.css"><meta property="og:title" content="Bruce Bana Developer Dashboard | Projects, AI &amp; GitHub"><meta property="og:description" content="A lightweight developer dashboard for Bruce Bana with public GitHub activity, current projects, technical stack and AI experiments."><meta property="og:url" content="https://bruce-bana.github.io/dashboard.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Bruce Bana"><meta property="og:image" content="https://bruce-bana.github.io/profile.jpg"><meta property="og:image:alt" content="Portrait of Bruce Bana"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Bruce Bana Developer Dashboard | Projects, AI &amp; GitHub"><meta name="twitter:description" content="A lightweight developer dashboard for Bruce Bana with public GitHub activity, current projects, technical stack and AI experiments."><meta name="twitter:image" content="https://bruce-bana.github.io/profile.jpg"><meta name="twitter:image:alt" content="Portrait of Bruce Bana"><meta name="robots" content="index, follow"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://bruce-bana.github.io/dashboard.html#webpage","url":"https://bruce-bana.github.io/dashboard.html","name":"Bruce Bana Developer Dashboard | Projects, AI & GitHub","description":"A lightweight developer dashboard for Bruce Bana with public GitHub activity, current projects, technical stack and AI experiments.","isPartOf":{"@id":"https://bruce-bana.github.io/#website"},"inLanguage":"en","author":{"@id":"https://bruce-bana.github.io/#person"}},{"@type":"Person","@id":"https://bruce-bana.github.io/#person","name":"Bruce Bana","alternateName":"Banalekaki Edward Joseph","url":"https://bruce-bana.github.io/","jobTitle":"Software Developer","sameAs":["https://github.com/bruce-Bana","https://www.linkedin.com/in/bruce-bana/","https://medium.com/@brucebana00"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://bruce-bana.github.io/"},{"@type":"ListItem","position":2,"name":"Bruce Bana Developer Dashboard | Projects, AI & GitHub","item":"https://bruce-bana.github.io/dashboard.html"}]}]}</script></head>
 <body data-page="dashboard"><div class="bg-layer"><canvas id="stars"></canvas><div class="bg-grid"></div><div class="horizon-glow"></div><div class="scan-sweep"></div></div>
 <nav><div class="wrap"><a class="brand" href="index.html">bruce<span class="dot">.</span>bana</a><div class="navlinks"><a href="index.html">home</a><a href="dashboard.html">dashboard</a><a href="projects.html">projects</a><a href="blog.html">blog</a><a href="lab.html">lab</a><a href="contact.html">contact</a></div></div></nav>
-<main><header class="page-head"><div class="wrap"><p class="eyebrow">developer dashboard</p><h1 class="page-title">SYSTEM // ONLINE</h1><p class="page-sub">A live, lightweight command center for the work, experiments and public development activity behind Bruce Bana.</p></div></header>
+<main>
+<nav class="breadcrumbs wrap" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Dashboard</span></nav>
+<header class="page-head"><div class="wrap"><p class="eyebrow">developer dashboard</p><h1 class="page-title">SYSTEM // ONLINE</h1><p class="page-sub">A live, lightweight command center for the work, experiments and public development activity behind Bruce Bana.</p></div></header>
 <section><div class="wrap"><div class="dashboard-grid">
 <div class="glass dash-card"><div class="dash-label">STATUS</div><div class="dash-value"><span class="status-dot"></span> BUILDING</div><p>AI assistants, developer tools, local runtimes and experimental software systems.</p></div>
 <div class="glass dash-card"><div class="dash-label">STACK</div><div class="dash-value">PYTHON · RUST · JS</div><p>With Node.js, Android and browser technologies around the core stack.</p></div>
@@ -20,7 +22,7 @@
 <div class="glass build-card"><span class="build-id">BEX CLI</span><h3>Command interface</h3><p>Agentic workflows, provider routing, tools and automation from the terminal.</p><span class="chip">CLI / AI</span></div>
 <div class="glass build-card"><span class="build-id">JARVIS</span><h3>Personal AI assistant</h3><p>Voice, reasoning, device interaction and a futuristic local-first interface.</p><span class="chip">ASSISTANT</span></div>
 </div></div></section>
-</main><footer><div class="wrap">© 2026 Bruce Bana <span class="dot">·</span> dashboard</div></footer><script src="script.js"></script><script>
+</main><footer><div class="wrap">© 2026 Bruce Bana <span class="dot">·</span> dashboard</div></footer><script src="script.js" defer></script><script>
 const rg=document.getElementById('githubRepos');
 fetch('https://api.github.com/users/bruce-Bana/repos?sort=updated&per_page=6')
 .then(r=>{if(!r.ok)throw new Error('GitHub API unavailable');return r.json()})
