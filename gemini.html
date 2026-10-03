@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gemini Assistant | Bruce Bana</title>
+<meta name="description" content="Chat with the Gemini-powered assistant on Bruce Bana's developer website.">
+<meta name="theme-color" content="#060714">
+<link rel="canonical" href="https://bruce-bana.github.io/gemini.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="gemini">
+<div class="bg-layer"><canvas id="stars"></canvas><div class="bg-grid"></div><div class="horizon-glow"></div><div class="scan-sweep"></div></div>
+<nav><div class="wrap"><a class="brand" href="index.html">bruce<span class="dot">.</span>bana</a><div class="navlinks"><a href="index.html">home</a><a href="projects.html">projects</a><a href="blog.html">blog</a><a href="lab.html">lab</a><a href="gemini.html" class="active">gemini</a></div></div></nav>
+<main>
+<section class="page-head"><div class="wrap"><p class="eyebrow">ai interface / gemini</p><h1>Gemini <span class="grad">Assistant</span></h1><p class="role">Ask about Bruce Bana, the projects on this site, software development, AI systems, or general questions.</p></div></section>
+<section><div class="wrap">
+<div class="gemini-layout">
+<aside class="glass gemini-settings">
+<div class="ic-tag">01 / connection</div>
+<h2>Connect Gemini</h2>
+<p class="muted">Enter your own Gemini API key to enable the assistant. The key is used directly by your browser and is not stored unless you choose to remember it.</p>
+<label class="field-label" for="geminiKey">Gemini API key</label>
+<input id="geminiKey" class="gemini-input" type="password" placeholder="Paste your Gemini API key">
+<label class="check"><input id="rememberKey" type="checkbox"> Remember on this device</label>
+<button id="connectBtn" class="gemini-btn">Connect</button>
+<div id="keyStatus" class="status">Not connected</div>
+<hr>
+<div class="ic-tag">02 / modes</div>
+<button class="quick" data-prompt="Tell me about Bruce Bana and what he builds.">About Bruce</button>
+<button class="quick" data-prompt="Explain Bruce Bana's AI projects shown on this website.">Projects</button>
+<button class="quick" data-prompt="Give me a concise explanation of how to build a local AI assistant on older hardware.">Local AI</button>
+<button class="quick" data-prompt="Give me a useful software engineering tip for building reliable AI agents.">Engineering tip</button>
+</aside>
+<div class="glass gemini-chat">
+<div class="chat-top"><div><strong>BRUCE // GEMINI</strong><span>online assistant interface</span></div><button id="clearChat" class="icon-btn" title="Clear chat">CLR</button></div>
+<div id="messages" class="messages"><div class="msg assistant"><div class="msg-label">GEMINI</div><div>System ready. Connect a Gemini API key, then ask me anything.</div></div></div>
+<form id="chatForm" class="chat-input-row"><button type="button" id="micBtn" class="mic-btn" title="Voice input">◉</button><textarea id="prompt" rows="1" placeholder="Ask Gemini..." autocomplete="off"></textarea><button class="send-btn" type="submit">SEND</button></form>
+<div class="chat-foot">Your API key is sent only to Google's Gemini API from your browser. Do not use a key you are not comfortable using client-side.</div>
+</div>
+</div>
+</div></section>
+</main>
+<footer><div class="wrap">© 2026 Bruce Bana <span class="dot">·</span> Gemini assistant</div></footer>
+<script src="script.js"></script><script src="gemini-chat.js"></script>
+</body></html>
