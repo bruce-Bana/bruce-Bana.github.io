@@ -11,6 +11,9 @@
   const canvas = document.getElementById('stars');
   if(!canvas) return;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobile = window.matchMedia('(max-width: 680px)').matches;
+  const lowPower = mobile || navigator.connection?.saveData || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+  const animateStars = !reduceMotion && !lowPower;
   const ctx = canvas.getContext('2d');
   let w, h, stars = [];
 
@@ -20,8 +23,7 @@
   }
   function init(){
     resize();
-    const mobile = window.matchMedia('(max-width: 680px)').matches;
-    const count = Math.min(mobile ? 38 : 100, Math.floor((w*h)/(mobile ? 22000 : 12500)));
+    const count = Math.min(lowPower ? 38 : 100, Math.floor((w*h)/(lowPower ? 22000 : 12500)));
     stars = Array.from({length: count}, () => ({
       x: Math.random()*w,
       y: Math.random()*h*0.6,
@@ -34,24 +36,24 @@
   }
   let frame=0;
   function draw(){
-    if(document.hidden){requestAnimationFrame(draw);return;}
+    if(document.hidden) return;
     frame++;
-    if(window.matchMedia('(max-width: 680px)').matches && frame%2){requestAnimationFrame(draw);return;}
     ctx.clearRect(0,0,w,h);
     for(const s of stars){
       ctx.beginPath();
       ctx.fillStyle = `rgba(${s.hue},${s.a})`;
       ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
       ctx.fill();
-      if(!reduceMotion){
+      if(animateStars){
         s.a += s.tw * s.dir;
         if(s.a > 0.85 || s.a < 0.15) s.dir *= -1;
       }
     }
-    if(!reduceMotion) requestAnimationFrame(draw);
+    if(animateStars) requestAnimationFrame(draw);
   }
   let resizeTimer;
-  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer=setTimeout(()=>{init();if(reduceMotion)draw();},180); });
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer=setTimeout(()=>{init();if(!animateStars)draw();},180); });
+  document.addEventListener('visibilitychange', () => { if(!document.hidden){if(animateStars)requestAnimationFrame(draw);else draw();} });
   init();
   draw();
 })();
@@ -107,10 +109,10 @@
 // ---------- enhanced navigation + utilities ----------
 (function(){
  const links=[['dashboard.html','dashboard'],['projects.html','projects'],['blog.html','blog'],['lab.html','lab'],['search.html','search'],['games.html','games'],['cv.html','cv']];
- document.querySelectorAll('.navlinks').forEach(nav=>{links.forEach(([href,label])=>{if(!nav.querySelector('a[href="'+href+'"]')){const a=document.createElement('a');a.href=href;a.textContent=label;nav.appendChild(a);}});});
+ document.querySelectorAll('.navlinks').forEach(nav=>{links.forEach(([href,label])=>{let a=nav.querySelector('a[href="'+href+'"]');if(!a){a=document.createElement('a');a.href=href;a.textContent=label;a.dataset.page=label;nav.appendChild(a);}if(document.body.dataset.page===label)a.classList.add('active');});});
  const body=document.body;
  if('serviceWorker' in navigator && location.protocol==='https:') navigator.serviceWorker.register('sw.js').catch(()=>{});
- const year=document.querySelector('footer .wrap'); if(year) year.innerHTML=year.innerHTML.replace(/©\\s*\\d{4}/,'© '+new Date().getFullYear());
+ const year=document.querySelector('footer .wrap'); if(year) year.innerHTML=year.innerHTML.replace(/©\s*\d{4}/,'© '+new Date().getFullYear());
 })();
 
 // ---------- keyboard shortcut: / opens site search ----------
@@ -134,7 +136,7 @@
 
 // ---------- interactive card tilt ----------
 (function(){
- if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(pointer: coarse)').matches || navigator.connection?.saveData || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4))return;
  document.querySelectorAll('.int-card,.blog-card,.repo-card').forEach(card=>{
   card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform='perspective(700px) rotateX('+(-y*3)+'deg) rotateY('+(x*3)+'deg) translateY(-3px)';});
   card.addEventListener('mouseleave',()=>card.style.transform='');
@@ -145,7 +147,7 @@
 (function(){
  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  if(reduce)return;
- if(window.matchMedia('(max-width: 680px)').matches)return;
+ if(window.matchMedia('(max-width: 680px)').matches || navigator.connection?.saveData || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4))return;
  const c=document.createElement('canvas');c.id='lifeCanvas';c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.42';document.querySelector('.bg-layer')?.appendChild(c);
  const x=c.getContext('2d');let w,h,p=[];
  function resize(){w=c.width=innerWidth;h=c.height=innerHeight;p=Array.from({length:Math.min(55,Math.floor(w/24))},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22}))}resize();addEventListener('resize',resize);
