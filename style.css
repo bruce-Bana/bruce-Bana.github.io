@@ -186,7 +186,9 @@ footer .dot{color:var(--cyan);}
   .prow{grid-template-columns:1fr; gap:6px;}
   .prow.head{display:none;}
   .prow .pstatus{justify-self:start;}
-  .navlinks{display:none;}
+  .navlinks{display:flex;gap:12px;max-width:calc(100vw - 150px);overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;}
+  .navlinks::-webkit-scrollbar{display:none;}
+  .navlinks a{white-space:nowrap;flex:0 0 auto;}
   .bg-grid{height:32vh;}
 }
 @media (prefers-reduced-motion: reduce){
