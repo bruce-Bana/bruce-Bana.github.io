@@ -255,7 +255,10 @@ h2,h3{letter-spacing:-.025em}
 .blog-card,.dashboard-card,.lab-card,.game-card,.cv-card{border-radius:12px}
 footer{border-top:1px solid rgba(166,183,210,.1);background:rgba(7,10,18,.72)}
 @media(max-width:760px){
- .wrap{padding:0 20px}.navlinks{gap:12px;overflow-x:auto}.navlinks a{white-space:nowrap}
+ .wrap{padding:0 20px}
+ .navlinks{display:flex;gap:12px;max-width:calc(100vw - 150px);overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+ .navlinks::-webkit-scrollbar{display:none}
+ .navlinks a{white-space:nowrap;flex:0 0 auto}
  .hero{padding:64px 0 50px}.hero-grid{gap:40px}.hero h1{font-size:46px}.role{font-size:15px}
 }
 
