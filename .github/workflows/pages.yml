@@ -42,16 +42,17 @@ jobs:
 
           for page in html_files:
               source = page.read_text(encoding='utf-8')
-              if len(re.findall(r'</head\\s*>', source, re.I)) != 1:
+              if len(re.findall(r"</head\s*>", source, re.I)) != 1:
                   errors.append(f'{page}: expected exactly one closing </head>')
-              if len(re.findall(r'<body\\b', source, re.I)) != 1:
+              if len(re.findall(r"<body\b", source, re.I)) != 1:
                   errors.append(f'{page}: expected exactly one <body>')
-              for block in re.findall(r'<script\\b[^>]*type=["\\']application/ld\\+json["\\'][^>]*>(.*?)</script>', source, re.I | re.S):
+              blocks = re.findall(r'<script\b[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', source, re.I | re.S)
+              for block in blocks:
                   try:
                       json.loads(block)
                   except json.JSONDecodeError as exc:
                       errors.append(f'{page}: invalid JSON-LD ({exc})')
-              for value in re.findall(r'(?:href|src)=["\\']([^"\\']+)["\\']', source, re.I):
+              for value in re.findall(r"""(?:href|src)=["']([^"']+)["']""", source, re.I):
                   if value.startswith(('#', '//', 'http://', 'https://', 'mailto:', 'tel:', 'data:', 'javascript:')):
                       continue
                   relative = value.split('#', 1)[0].split('?', 1)[0]
@@ -81,14 +82,14 @@ jobs:
                   target = root / relative
                   if not target.exists():
                       errors.append(f'sitemap.xml: URL has no file {loc.text}')
-                  elif re.search(r'<meta[^>]+name=["\\']robots["\\'][^>]+noindex', target.read_text(encoding='utf-8'), re.I):
+                  elif re.search(r'<meta[^>]+name="robots"[^>]+noindex', target.read_text(encoding='utf-8'), re.I):
                       errors.append(f'sitemap.xml: noindex page listed {loc.text}')
           except Exception as exc:
               errors.append(f'sitemap.xml: invalid XML ({exc})')
 
           if errors:
               print('Site validation failed:')
-              print('\\n'.join('- ' + error for error in errors))
+              print('\n'.join('- ' + error for error in errors))
               raise SystemExit(1)
           print(f'Validated {len(html_files)} HTML pages, local links, JSON-LD, sitemap and manifest.')
           PY
