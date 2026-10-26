@@ -126,7 +126,7 @@
  if(!mobile){const orb=document.createElement('div');orb.className='float-orb';document.body.appendChild(orb);}
  const cursor=mobile?null:document.createElement('div');if(cursor){cursor.className='cursor-glow';document.body.appendChild(cursor);}
  if(!reduce){
-  document.addEventListener('mousemove',e=>{document.documentElement.style.setProperty('--mx',e.clientX+'px');document.documentElement.style.setProperty('--my',e.clientY+'px');if(cursor){cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';cursor.style.opacity='1';}});
+  if(!mobile)document.addEventListener('mousemove',e=>{document.documentElement.style.setProperty('--mx',e.clientX+'px');document.documentElement.style.setProperty('--my',e.clientY+'px');if(cursor){cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';cursor.style.opacity='1';}});
   if(cursor)document.addEventListener('mouseleave',()=>cursor.style.opacity='0');
   let last=0;window.addEventListener('scroll',()=>{const now=performance.now();if(now-last<30)return;last=now;const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?(scrollY/max)*100:0)+'%';});
   const els=document.querySelectorAll('section,.int-card,.glass');const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal','visible')}),{threshold:.08});els.forEach(e=>{if(!e.classList.contains('reveal'))e.classList.add('reveal');io.observe(e)});
