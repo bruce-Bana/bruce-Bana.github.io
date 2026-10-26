@@ -23,6 +23,75 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: |
+          node --check script.js
+          node --check sw.js
+      - name: Validate site links, metadata, sitemap and manifest
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          import pathlib
+          import xml.etree.ElementTree as ET
+          from urllib.parse import urlparse
+
+          root = pathlib.Path('.').resolve()
+          errors = []
+          html_files = sorted(root.glob('*.html'))
+
+          for page in html_files:
+              source = page.read_text(encoding='utf-8')
+              if len(re.findall(r'</head\\s*>', source, re.I)) != 1:
+                  errors.append(f'{page}: expected exactly one closing </head>')
+              if len(re.findall(r'<body\\b', source, re.I)) != 1:
+                  errors.append(f'{page}: expected exactly one <body>')
+              for block in re.findall(r'<script\\b[^>]*type=["\\']application/ld\\+json["\\'][^>]*>(.*?)</script>', source, re.I | re.S):
+                  try:
+                      json.loads(block)
+                  except json.JSONDecodeError as exc:
+                      errors.append(f'{page}: invalid JSON-LD ({exc})')
+              for value in re.findall(r'(?:href|src)=["\\']([^"\\']+)["\\']', source, re.I):
+                  if value.startswith(('#', '//', 'http://', 'https://', 'mailto:', 'tel:', 'data:', 'javascript:')):
+                      continue
+                  relative = value.split('#', 1)[0].split('?', 1)[0]
+                  if not relative:
+                      continue
+                  target = (page.parent / relative).resolve()
+                  if not target.exists():
+                      errors.append(f'{page}: missing local target {value}')
+
+          try:
+              manifest = json.loads((root / 'site.webmanifest').read_text(encoding='utf-8'))
+              for icon in manifest.get('icons', []):
+                  if not (root / icon['src']).exists():
+                      errors.append(f"site.webmanifest: missing icon {icon['src']}")
+          except Exception as exc:
+              errors.append(f'site.webmanifest: invalid JSON or icon configuration ({exc})')
+
+          try:
+              sitemap = ET.parse(root / 'sitemap.xml').getroot()
+              ns = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+              for loc in sitemap.findall('sm:url/sm:loc', ns):
+                  parsed = urlparse(loc.text or '')
+                  if parsed.netloc.lower() != 'bruce-bana.github.io':
+                      errors.append(f'sitemap.xml: unexpected host in {loc.text}')
+                      continue
+                  relative = parsed.path.lstrip('/') or 'index.html'
+                  target = root / relative
+                  if not target.exists():
+                      errors.append(f'sitemap.xml: URL has no file {loc.text}')
+                  elif re.search(r'<meta[^>]+name=["\\']robots["\\'][^>]+noindex', target.read_text(encoding='utf-8'), re.I):
+                      errors.append(f'sitemap.xml: noindex page listed {loc.text}')
+          except Exception as exc:
+              errors.append(f'sitemap.xml: invalid XML ({exc})')
+
+          if errors:
+              print('Site validation failed:')
+              print('\\n'.join('- ' + error for error in errors))
+              raise SystemExit(1)
+          print(f'Validated {len(html_files)} HTML pages, local links, JSON-LD, sitemap and manifest.')
+          PY
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload site artifact
