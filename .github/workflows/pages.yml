@@ -38,7 +38,7 @@ jobs:
 
           root = pathlib.Path('.').resolve()
           errors = []
-          html_files = sorted(root.glob('*.html'))
+          html_files = sorted(path for path in root.glob('*.html') if path.name != 'googleff2bf592f75a3181.html')
 
           for page in html_files:
               source = page.read_text(encoding='utf-8')
