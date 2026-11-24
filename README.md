@@ -1,49 +1,37 @@
 # Bruce Bana — Personal portfolio
 
-A lightweight, responsive portfolio for Bruce Bana, software developer and AI systems builder based in Kampala, Uganda.
+A lightweight, responsive portfolio for Bruce Bana, an independent software developer in Uganda.
 
-## Design
+## Main pages
 
-The site uses a dark editorial visual system with restrained cyan and violet accents, glass surfaces, responsive project cards, clear typography and a compact mobile navigation. The homepage highlights selected projects, technical interests, engineering notes and contact links.
+- `index.html` — Home, introduction and selected work
+- `projects.html` — Software projects and experiments
+- `about.html` — Background, skills and approach
+- `contact.html` — Phone, WhatsApp, email and social links
+
+The site intentionally keeps its public navigation to these four pages. Supporting files such as the custom 404 page, Google verification, sitemap, web manifest and service worker are infrastructure, not extra navigation pages.
 
 ## Features
 
-- Responsive layouts for desktop, tablet and mobile
-- Accessible navigation, keyboard escape support and skip-to-content link
-- Lightweight animated starfield on capable desktop devices
-- Reduced-motion and save-data awareness
-- Project, blog, profile, dashboard, lab, games and search pages
-- Search-engine metadata, canonical URLs, structured data, robots.txt and XML sitemap
-- Installable/offline support through the existing web manifest and service worker
-- No frontend framework or build dependencies; plain HTML, CSS and JavaScript
-
-## Pages
-
-- `index.html` — Home and selected work
-- `about.html` — About and technical background
-- `projects.html` — Project portfolio
-- `interests.html` — Interests
-- `contact.html` — Social and contact links
-- `blog.html` and `blog-*.html` — Engineering notes
-- `dashboard.html`, `lab.html`, `games.html`, `search.html`, `cv.html` — Interactive and profile pages
+- Responsive, accessible layouts
+- Lightweight plain HTML, CSS and JavaScript; no frontend framework
+- Search metadata, canonical URLs, structured data, robots.txt and a focused XML sitemap
+- Installable/offline support through the web manifest and service worker
+- Reduced-motion support
 
 ## Local preview
 
-Open `index.html` directly in a browser, or run a simple static server:
-
-```bash
-python -m http.server 8000
-```
-
-Then visit `http://localhost:8000`.
+Run `python -m http.server 8000` in the project directory and visit `http://localhost:8000`.
 
 ## Deployment
 
-The repository is hosted on GitHub Pages. Commits to the configured publishing branch trigger the existing Pages deployment workflow.
+Hosted on GitHub Pages. Commits to the publishing branch trigger the existing deployment workflow.
 
 ## SEO
 
-The canonical site address is https://bruce-bana.github.io/. The repository includes `robots.txt`, `sitemap.xml`, Google Search Console verification, Open Graph metadata and JSON-LD structured data. After deployment, submit `https://bruce-bana.github.io/sitemap.xml` in Google Search Console.
+Canonical site: https://bruce-bana.github.io/
+
+Submit `https://bruce-bana.github.io/sitemap.xml` in Google Search Console after deployment.
 
 ## License
 
