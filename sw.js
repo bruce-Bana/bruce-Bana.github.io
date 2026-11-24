@@ -1,4 +1,4 @@
-const CACHE = 'bruce-bana-v3';
+const CACHE = 'bruce-bana-v4';
 const PRECACHE = [
   './', './index.html', './projects.html', './about.html', './contact.html',
   './style.css', './script.js', './profile.jpg', './offline.html',
