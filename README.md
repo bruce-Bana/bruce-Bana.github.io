@@ -1,64 +1,50 @@
-# bruce.bana
+# Bruce Bana — Personal portfolio
 
-Personal portfolio and about site for Bruce Bana — software developer and AI systems builder.
+A lightweight, responsive portfolio for Bruce Bana, software developer and AI systems builder based in Kampala, Uganda.
 
-## Overview
+## Design
 
-This is a static portfolio site showcasing projects, interests, and ways to connect. Built with vanilla HTML, CSS, and JavaScript with a holographic/near-future HUD theme.
+The site uses a dark editorial visual system with restrained cyan and violet accents, glass surfaces, responsive project cards, clear typography and a compact mobile navigation. The homepage highlights selected projects, technical interests, engineering notes and contact links.
 
 ## Features
 
-- **Modern Design**: Glass morphism UI with animated starfield and grid backgrounds
-- **Fully Responsive**: Mobile-friendly layouts and accessibility-focused animations
-- **Zero Dependencies**: Pure HTML, CSS, and vanilla JavaScript
-- **Performance**: Minimal file size, fast load times
-- **Accessibility**: Respects `prefers-reduced-motion` preference
+- Responsive layouts for desktop, tablet and mobile
+- Accessible navigation, keyboard escape support and skip-to-content link
+- Lightweight animated starfield on capable desktop devices
+- Reduced-motion and save-data awareness
+- Project, blog, profile, dashboard, lab, games and search pages
+- Search-engine metadata, canonical URLs, structured data, robots.txt and XML sitemap
+- Installable/offline support through the existing web manifest and service worker
+- No frontend framework or build dependencies; plain HTML, CSS and JavaScript
 
 ## Pages
 
-- **Home** (`index.html`) — Hero section with terminal animation
-- **About** (`about.html`) — Background, philosophy, and tech stack
-- **Projects** (`projects.html`) — AIDE Ultra, BEX CLI, Auto-research, JARVIS builds
-- **Interests** (`interests.html`) — Game dev, physics, math, language
-- **Contact** (`contact.html`) — Links and connection methods
+- `index.html` — Home and selected work
+- `about.html` — About and technical background
+- `projects.html` — Project portfolio
+- `interests.html` — Interests
+- `contact.html` — Social and contact links
+- `blog.html` and `blog-*.html` — Engineering notes
+- `dashboard.html`, `lab.html`, `games.html`, `search.html`, `cv.html` — Interactive and profile pages
 
-## Tech Stack
+## Local preview
 
-- **Languages**: Python · Rust · JavaScript/TypeScript
-- **Focus**: AI runtimes · CLI tools · Autonomous agents
-- **Platforms**: Android · Desktop · Web
-
-## Projects Highlighted
-
-- **AIDE Ultra** — Local AI runtime (Python)
-- **BEX CLI** — Command-line tool v8 ultra (Node.js)
-- **Auto-research** — Research tool v2.0 (Node.js)
-- **JARVIS Phase 11** — AI command interface (Rust)
-
-## Getting Started
-
-Simply clone or download and open `index.html` in a web browser. No build step or server required.
+Open `index.html` directly in a browser, or run a simple static server:
 
 ```bash
-git clone https://github.com/bruce-Bana/bruce-Bana.github.io.git
-cd bruce-Bana.github.io
-# Open index.html in your browser
+python -m http.server 8000
 ```
 
-For GitHub Pages deployment, ensure this repo has GitHub Pages enabled in settings.
+Then visit `http://localhost:8000`.
 
-## Author
+## Deployment
 
-**Bruce Bana** (Banalekaki Edward Joseph)  
-Independent developer based in Kampala, Uganda
+The repository is hosted on GitHub Pages. Commits to the configured publishing branch trigger the existing Pages deployment workflow.
 
-- Medium: [@brucebana00](https://medium.com/@brucebana00)
-- Location: Kampala, Uganda
+## SEO
+
+The canonical site address is https://bruce-bana.github.io/. The repository includes `robots.txt`, `sitemap.xml`, Google Search Console verification, Open Graph metadata and JSON-LD structured data. After deployment, submit `https://bruce-bana.github.io/sitemap.xml` in Google Search Console.
 
 ## License
 
-This project is open source and available under the MIT License.
-
----
-
-*Built with intent, not a template* © 2026
+MIT.
