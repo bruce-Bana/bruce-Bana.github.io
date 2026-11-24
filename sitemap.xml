@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://bruce-bana.github.io/</loc><lastmod>2026-11-24</lastmod><priority>1.0</priority></url>
-  <url><loc>https://bruce-bana.github.io/about.html</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://bruce-bana.github.io/projects.html</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://bruce-bana.github.io/interests.html</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://bruce-bana.github.io/contact.html</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://bruce-bana.github.io/blog.html</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://bruce-bana.github.io/blog-building-python-ai-assistant.html</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://bruce-bana.github.io/blog-local-ai-on-older-hardware.html</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://bruce-bana.github.io/blog-building-bex-cli.html</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://bruce-bana.github.io/blog-rust-ai-command-interface.html</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://bruce-bana.github.io/dashboard.html</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://bruce-bana.github.io/lab.html</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://bruce-bana.github.io/games.html</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://bruce-bana.github.io/cv.html</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://bruce-bana.github.io/</loc><priority>1.0</priority></url>
+  <url><loc>https://bruce-bana.github.io/projects.html</loc><priority>0.8</priority></url>
+  <url><loc>https://bruce-bana.github.io/about.html</loc><priority>0.7</priority></url>
+  <url><loc>https://bruce-bana.github.io/contact.html</loc><priority>0.7</priority></url>
 </urlset>
